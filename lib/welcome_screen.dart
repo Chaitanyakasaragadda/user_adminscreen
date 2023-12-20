@@ -3,24 +3,11 @@ import 'package:flutter/material.dart';
 class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.transparent, // Set background color to transparent
-        buttonTheme: const ButtonThemeData(
-          buttonColor: Colors.blue,
-          textTheme: ButtonTextTheme.primary,
-        ),
-      ),
-      darkTheme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: Colors.transparent, // Set background color to transparent
-        buttonTheme: const ButtonThemeData(
-          buttonColor: Colors.red,
-          textTheme: ButtonTextTheme.primary,
-        ),
-      ),
-      themeMode: ThemeMode.light,
+    String imagePath = "images/Scissors-image-remove.png";
+    Color imageColor = Colors.cyanAccent;
 
-      home: Scaffold(
+    return MaterialApp(
+    home: Scaffold(
         body: Stack(
           children: [
             // Background Image
@@ -36,27 +23,33 @@ class WelcomeScreen extends StatelessWidget {
               padding: EdgeInsets.all(10),
               child: Column(
                 children: [
-                  Container(
+                  Align(
                     alignment: Alignment.topLeft,
-                    child: Image.asset("images/Scissors-image-remove.png", height: 100, width: 100,),
+                    child:ColorFiltered(
+                      colorFilter: ColorFilter.mode(
+                        imageColor,
+                        BlendMode.srcIn,
+                      ),
+                      child: Image.asset(
+                        imagePath,
+                        width: 100.0, // Adjust the width as needed
+                        height: 100.0, // Adjust the height as needed
+                      ),
+                    ) ,
                   ),
                   Container(
                     alignment: Alignment.topLeft,
                     child: Text(
                       'SCISSOR\'S ',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.cyanAccent),
                     ),
                   ),
                   SizedBox(height: 30),
-                Icon(Icons.spa_rounded, size: 50,color:Color(0xFF7165D6)),
-
-
-              Container(
-                    child: Text(
+                  Icon(Icons.spa_outlined, size: 50,color:Colors.cyanAccent),
+                  Text(
                       'WELCOME TO SCISSOR\'S SALOON',
-                      style: TextStyle(color: Colors.white,fontSize: 25, fontWeight: FontWeight.bold,),
+                      style: TextStyle(color: Colors.cyanAccent,fontSize: 25, fontWeight: FontWeight.bold,),
                     ),
-                  ),
                   SizedBox(height: 50),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -65,17 +58,16 @@ class WelcomeScreen extends StatelessWidget {
                         radius: 40,
                         child:IconButton(
                             onPressed:(
-                                login()
+                            login()
                             ) ,
-                            icon:  Icon(Icons.person,size: 70,color:Color(0xFF7165D6))) ,
+                            icon:  Icon(Icons.person_outline_outlined,size: 65,color:Colors.black) ),
                       ),
                       SizedBox(width: 15,),
-                      Container(
-                        child: Text(
+                      Text(
                           "USER",
                           style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
                         ),
-                      )
+
                     ],
                   ),
                   SizedBox(height: 20),
@@ -83,20 +75,19 @@ class WelcomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       CircleAvatar(
-                        radius: 40,
+                        radius: 39,
                         child: IconButton(
                             onPressed:(
                                 login()
                             ),
-                            icon: Icon(Icons.admin_panel_settings,size:70,color:Color(0xFF7165D6))) ,
+                            icon: Icon(Icons.admin_panel_settings_outlined,size:65,color:Colors.black)) ,
                       ),
                       SizedBox(width: 15,),
-                      Container(
-                        child: Text(
+                      Text(
                           "ADMIN",
-                          style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.white, fontSize: 19, fontWeight: FontWeight.bold),
                         ),
-                      ),
+
 
 
                     ],
